@@ -5,10 +5,13 @@ export default (types, schema, opts) => ({ commit, state, dispatch, rootState, r
   return new Promise((resolve, reject) => {
     if (opts && opts.validate && schema) {
       if (!state.validation[payload.id]) {
-        ValidationGenerator(state, schema, payload.id)
+        let validationObj = ValidationGenerator(schema, payload.id)
+        commit('VALIDATION_CREATE', validationObj)
       }
 
-      const validation = ValidateSchema(state.validation[payload.id], payload)
+      const clone = Object.assign({}, payload)
+      const validationClone = JSON.parse(JSON.stringify(Object.assign({}, state.validation[clone.id])))
+      const validation = ValidateSchema(validationClone, clone)
       validation.dirty = true
 
       commit('VALIDATION_UPDATE', validation)

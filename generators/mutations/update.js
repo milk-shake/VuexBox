@@ -1,9 +1,9 @@
 export default (types) => {
   return {
     [types['UPDATE']] (state, payload) {
-      let obj = state.all[payload.id]
-      obj[payload.field] = payload.value
-      state.all[payload.id] = obj
+      let clone = Object.assign({}, state.all)
+      clone[payload.id][payload.field] = payload.value
+      state.all = clone
     }
   }
 }

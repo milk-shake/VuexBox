@@ -3,8 +3,6 @@ export default (value, params) => {
   const min = values[0]
   const max = values[1]
 
-  console.log(min <= value.length && value.length <= max)
-
   if (Array.isArray(value)) {
     return min <= value.length && value.length <= max
   }

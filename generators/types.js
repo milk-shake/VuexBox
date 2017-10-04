@@ -8,6 +8,7 @@
  * REMOVE: deletes an entity via key from the store.all
  * UPDATE: updates an entity via id key from store.all
  * CREATE: creates a new entity
+ * REPLACE: replaces an entity with new data
  */
 export default () => {
   return {
@@ -15,6 +16,7 @@ export default () => {
     [`ADD`]: `ADD`,
     [`REMOVE`]: `REMOVE`,
     [`UPDATE`]: `UPDATE`,
-    [`CREATE`]: `CREATE`
+    [`CREATE`]: `CREATE`,
+    [`REPLACE`]: `REPLACE`
   }
 }

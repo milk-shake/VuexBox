@@ -6,6 +6,6 @@ import ById from './getters/byId'
  */
 export default () => {
   return Object.assign({},
-    { byId: ById }
+    { validationsById: ById }
   )
 }

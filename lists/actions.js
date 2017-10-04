@@ -8,6 +8,8 @@ import RemoveAtIndex from './actions/removeAtIndex'
 import Hydrate from './actions/hydrate'
 import Empty from './actions/empty'
 
+import SwapIndices from './actions/swapIndices'
+
 /**
  * List Actions
  * generates all the list actions
@@ -22,6 +24,7 @@ export default (types, name) => {
     [`add${capitalized}AtIndex`]: AddAtIndex(types, name),
     [`remove${capitalized}`]: Remove(types, name),
     [`remove${capitalized}AtIndex`]: RemoveAtIndex(types, name),
-    [`empty${capitalized}`]: Empty(types, name)
+    [`empty${capitalized}`]: Empty(types, name),
+    [`swap${capitalized}`]: SwapIndices(types, name)
   }
 }

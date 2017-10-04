@@ -12,7 +12,8 @@ export default (types, schema, opts) => ({ commit, state, dispatch, rootState, r
       const clone = Object.assign({}, state.all[payload.id])
       clone[payload.field] = payload.value
 
-      const validation = ValidateSchema(state.validation[payload.id], clone)
+      const validationClone = JSON.parse(JSON.stringify(Object.assign({}, state.validation[payload.id])))
+      const validation = ValidateSchema(validationClone, clone)
       validation.dirty = true
 
       commit('VALIDATION_UPDATE', validation)

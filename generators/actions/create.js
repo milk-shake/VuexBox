@@ -9,8 +9,12 @@ export default (types, schema, opts) => ({ commit, state, dispatch, rootState, r
         commit('VALIDATION_CREATE', validationObj)
       }
 
-      const validation = ValidateSchema(state.validation[payload.id], payload)
+      const clone = Object.assign({}, payload)
+      const validationClone = JSON.parse(JSON.stringify(Object.assign({}, state.validation[payload.id])))
+      const validation = ValidateSchema(validationClone, clone)
       validation.dirty = true
+      validation.dirty = false
+      validation.invalid = false
 
       commit('VALIDATION_UPDATE', validation)
     }

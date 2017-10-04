@@ -1,7 +1,9 @@
 export default (types) => {
   return {
     [types['VALIDATION_UPDATE']] (state, payload) {
-      state.validation[payload.id] = payload
+      const clone = Object.assign({}, state.validation)
+      clone[payload.id] = payload
+      state.validation = clone
     }
   }
 }

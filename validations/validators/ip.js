@@ -9,7 +9,6 @@ export default (value, length) => {
   if (typeof value !== 'string') {
     return false
   }
-  console.log('four', ipfour.test(value))
-  console.log('six', ipsix.test(value))
+
   return ipfour.test(value) || ipsix.test(value)
 }

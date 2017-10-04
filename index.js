@@ -111,7 +111,6 @@ export default class {
       this.mutations = Object.assign(this.mutations, DraftsMutationsGenerator(this.types))
       this.actions = Object.assign(this.actions, DraftsActionsGenerator(this.types, this.schema, this.opts))
       this.getters = Object.assign(this.getters, DraftsGettersGenerator())
-      console.log(this.getters)
     }
 
     return this
