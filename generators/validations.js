@@ -24,12 +24,19 @@ export default (schema, id) => {
 
       let validatorsStatus = schema[field].validations.reduce((prev, curr) => {
         prev[curr] = false
+        if (schema[field].messages) {
+
+        }
+        if (schema[field].messages) {
+          validations.messages = validations.messages || {}
+          validations.messages[curr] = schema[field].messages[curr]
+        }
+
         return prev
       }, {})
       obj[field] = validations
       obj[field].errors = validatorsStatus
     }
   }
-
   return obj
 }

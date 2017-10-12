@@ -63,3 +63,29 @@ export const generateRandomNumber = (min = 0, max = 100) => {
 export const capitalizeFirstLetter = (word) => {
   return word.charAt(0).toUpperCase() + word.slice(1)
 }
+
+/**
+* parseFormData
+* creates a new namespaced form data object for POSTing multipart formdata via XHR. Recursively calls itself.
+* @param Object object the data to append to the form data object
+* @param FormData the form data object passed to append to
+* @param String namespace the current namespace for the form data, used for recursive calls so that the data is correctly namespaced
+* @returns FormData the appended formdata
+**/
+export const parseFormData = function (object, formData, namespace) {
+  let fd = formData || new window.FormData()
+  let formKey
+  for (let property in object) {
+    if (namespace) {
+      formKey = namespace + '[' + property + ']'
+    } else {
+      formKey = property
+    }
+    if (typeof object[property] === 'object' && !(object[property] instanceof window.File)) {
+      parseFormData(object[property], fd, formKey)
+    } else {
+      fd.append(formKey, object[property])
+    }
+  }
+  return fd
+}
