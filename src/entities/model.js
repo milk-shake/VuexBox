@@ -13,4 +13,8 @@ export default class Model {
       })
     }
   }
+
+  static from(opts) {
+    return new Model(opts.name, opts)
+  }
 }

@@ -141,4 +141,11 @@ describe('Entity: Model', () => {
         .to.throw(Error)
     })
   })
+
+  describe('From', () => {
+    it('should create a new instance from the passed in options', () => {
+      model = new Model({ name: modelName.valid, schema: modelSchema.valid })
+      expect(model).to.be.instanceof(Model)
+    })
+  })
 })
